@@ -29,16 +29,6 @@ def calculate(input):
                 max1 = amt
             elif amt > max2:
                 max2 = amt
-            #     amt = 0
-            #     pass
-            # if amt > max1:
-            #     max1 = amt
-            #     amt = 0
-            #     pass
-            # if amt > max2:
-            #     max2 = amt
-            #     amt = 0
-            #     pass
             amt = 0
     
     return [max0, max1, max2, max0 + max1 + max2]
