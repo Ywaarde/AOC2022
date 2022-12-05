@@ -12,11 +12,11 @@ def move9000(stacks, moves):
     for m in moves:
         m_s = m.split()
         times = int(m_s[1])
-        source = int(m_s[3])
-        dest = int(m_s[5])
+        source = int(m_s[3])-1
+        dest = int(m_s[5])-1
         for i in range(times):
-            crate = stack_stacks[source-1].pop()
-            stack_stacks[dest-1].append(crate)
+            crate = stack_stacks[source].pop()
+            stack_stacks[dest].append(crate)
     result = ''
     for s in stack_stacks:
         result+= s.pop()
@@ -29,14 +29,13 @@ def move9001(stacks, moves):
     for m in moves:
         m_s = m.split()
         times = int(m_s[1])
-        source = int(m_s[3])
-        dest = int(m_s[5])
-        print(stack_stacks)
-        stack_length = len(stack_stacks[source-1])
-        load = stack_stacks[source-1][(stack_length-times):stack_length]
+        source = int(m_s[3])-1
+        dest = int(m_s[5])-1
+        stack_length = len(stack_stacks[source])
+        load = stack_stacks[source][(stack_length-times):stack_length]
         for _ in range(times):
-            stack_stacks[source-1].pop()
-        stack_stacks[dest-1]+= load
+            stack_stacks[source].pop()
+        stack_stacks[dest]+= load
     result = ''
     for s in stack_stacks:
         result+= s.pop()
