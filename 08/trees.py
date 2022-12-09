@@ -55,8 +55,6 @@ def visible(input):
     return len(result)
 
 def score_side(tree, others):
-    if not others:
-        return 1
     score = 0
     for t in others:
         score+=1
@@ -106,7 +104,7 @@ def scenic(input):
     result = []
 
     for indey, line in enumerate(input):
-        for index, tree in enumerate(line):
+        for index, _ in enumerate(line):
             result.append(score_all(input, index, indey))
     
     return max(result)
