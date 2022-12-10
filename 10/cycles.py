@@ -2,7 +2,7 @@ def pixel(cycle, signal):
     if (cycle%40) in [signal-1, signal, signal+1]:
         return '#'
     else:
-        return '.'
+        return ' '
 
 def display(input):
     cycle = 0
