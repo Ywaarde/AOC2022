@@ -1,10 +1,11 @@
-f = open('input.txt', 'r').read()
+f = open("input.txt", "r").read()
 
 calories_01 = f.splitlines()
 
-e = open('example.txt', 'r').read()
+e = open("example.txt", "r").read()
 
 calories_00 = e.splitlines()
+
 
 def calculate(input):
     max0 = 0
@@ -30,7 +31,7 @@ def calculate(input):
             elif amt > max2:
                 max2 = amt
             amt = 0
-    
+
     return [max0, max1, max2, max0 + max1 + max2]
 
 
