@@ -16,11 +16,10 @@ def valid_options(start, input):
             maybe = input[o[1]][o[0]]
             if maybe <= value + 1:
                 result.append(o)
-    # print(start, value, result)
     return result
 
 
-# 1  procedure BFS(G, root) is
+#  1  procedure BFS(G, root) is
 #  2      let Q be a queue
 #  3      label root as explored
 #  4      Q.enqueue(root)
@@ -35,7 +34,7 @@ def valid_options(start, input):
 # 13                  Q.enqueue(w)
 
 
-def bfs(start, input, height):
+def bfs(start, end, height):
     Q = deque()
 
     Q.append((start, 0))
@@ -44,7 +43,7 @@ def bfs(start, input, height):
     while Q:
         point, distance = Q.popleft()
 
-        if input[point[1]][point[0]] == "E":
+        if point == end:
             return distance
         for option in valid_options(point, height):
             if option not in explored:
@@ -55,7 +54,7 @@ def bfs(start, input, height):
 def find_path(input, more=False):
 
     start = []
-
+    end = []
     # Mapping it because in place evaluating is too hard apparently.
     mapped_input = [[0 for _ in range(len(input[0]))] for _ in range(len(input))]
 
@@ -63,17 +62,18 @@ def find_path(input, more=False):
         for x in range(len(line)):
             if line[x] == "S":
                 start.append((x, y))
-                mapped_input[y][x] = 1
+                mapped_input[y][x] = ord("a")
             elif line[x] == "E":
-                mapped_input[y][x] = 26
+                end = (x, y)
+                mapped_input[y][x] = ord("z")
             else:
                 if more and line[x] == "a":
                     start.append((x, y))
-                mapped_input[y][x] = ord(line[x]) - ord("a") + 1
+                mapped_input[y][x] = ord(line[x])
 
     paths = []
     for s in start:
-        p = bfs(s, input, mapped_input)
+        p = bfs(s, end, mapped_input)
         if p:
             paths.append(p)
 
